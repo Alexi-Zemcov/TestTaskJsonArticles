@@ -25,15 +25,19 @@ public class MainActivity extends AppCompatActivity {
         new FetchItemsTask().execute();
 
         mTextViewUserId = (TextView) findViewById(R.id.user_id);
-        mTextViewUserId.setText("mItems.get(0).getUserId()");
+//        mTextViewUserId.setText(mItems.get(0).getUserId());
 
         mTextViewId = (TextView) findViewById(R.id.article_id);
-        mTextViewId.setText("mItems.get(0).getArticleId()");
+//        mTextViewId.setText(mItems.get(0).getArticleId());
 
         mTextViewTitle = (TextView) findViewById(R.id.title);
+//        mTextViewTitle.setText(mItems.get(0).getTitle());
 
         mTextViewBody = (TextView) findViewById(R.id.body);
+//        mTextViewBody.setText(mItems.get(0).getBody());
 
+// Если обратиться к полученной коллекции здесь, то приложение не запускается
+//        Log.e(TAG, "Collection size is:" + mItems.size());
     }
 
 
@@ -47,7 +51,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<ArticlesItem> items) {
             mItems = items;
-            Log.e(TAG, "Collection is:" + mItems.toString());
+//            Обращение к коллекции здесь выдает корректный результат
+            Log.e(TAG, "Collection size is: " + mItems.size());
+            Log.e(TAG, "One article:\n"
+                    + "User id: " + mItems.get(0).getUserId() + "\n"
+                    + "Article id: " + mItems.get(0).getArticleId() + "\n"
+                    + "Title: " + mItems.get(0).getTitle() + "\n"
+                    + "Body: " + mItems.get(0).getBody());
         }
     }
 }
