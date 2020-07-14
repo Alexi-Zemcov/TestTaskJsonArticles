@@ -1,9 +1,18 @@
 package com.jf1303.testtaskjsonarticles;
 
-public class ArticlesItems {
+public class ArticlesItem {
+    private String mUserId;
     private String mTitle;
     private String mBody;
     private String mId;
+
+    public String getUserId() {
+        return mUserId;
+    }
+
+    public void setUserId(String mUserId) {
+        this.mUserId = mUserId;
+    }
 
     public String getTitle() {
         return mTitle;
