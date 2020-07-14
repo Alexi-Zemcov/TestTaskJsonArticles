@@ -67,7 +67,7 @@ public class JsonPlaceholderFetcher {
             JSONObject articlesJsonObject = jsonBody.getJSONObject(i);
             ArticlesItem item = new ArticlesItem();
             item.setUserId(articlesJsonObject.getString("userId"));
-            item.setId(articlesJsonObject.getString("id"));
+            item.setArticleId(articlesJsonObject.getString("id"));
             item.setTitle(articlesJsonObject.getString("title"));
             item.setBody(articlesJsonObject.getString("body"));
             items.add(item);

@@ -4,7 +4,7 @@ public class ArticlesItem {
     private String mUserId;
     private String mTitle;
     private String mBody;
-    private String mId;
+    private String mArticleId;
 
     public String getUserId() {
         return mUserId;
@@ -30,11 +30,11 @@ public class ArticlesItem {
         this.mBody = mBody;
     }
 
-    public String getId() {
-        return mId;
+    public String getArticleId() {
+        return mArticleId;
     }
 
-    public void setId(String mId) {
-        this.mId = mId;
+    public void setArticleId(String mId) {
+        this.mArticleId = mId;
     }
 }
