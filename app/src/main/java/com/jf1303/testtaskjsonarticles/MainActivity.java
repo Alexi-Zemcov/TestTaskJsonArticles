@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextViewTitle;
     private TextView mTextViewBody;
 
-    private List<ArticlesItem> mItems;
+    private List<ArticlesItem> mItems = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 //        mTextViewBody.setText(mItems.get(0).getBody());
 
 // Если обратиться к полученной коллекции здесь, то приложение не запускается
-//        Log.e(TAG, "Collection size is:" + mItems.size());
+        Log.e(TAG, "Collection size from \"onCreate()\" is:" + mItems.size());
     }
 
 
@@ -52,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(List<ArticlesItem> items) {
             mItems = items;
 //            Обращение к коллекции здесь выдает корректный результат
-            Log.e(TAG, "Collection size is: " + mItems.size());
-            Log.e(TAG, "One article:\n"
-                    + "User id: " + mItems.get(0).getUserId() + "\n"
-                    + "Article id: " + mItems.get(0).getArticleId() + "\n"
-                    + "Title: " + mItems.get(0).getTitle() + "\n"
-                    + "Body: " + mItems.get(0).getBody());
+            Log.e(TAG, "Collection size from \"onPostExecute()\" is: " + mItems.size());
+//            Log.e(TAG, "One article:\n"
+//                    + "User id: " + mItems.get(0).getUserId() + "\n"
+//                    + "Article id: " + mItems.get(0).getArticleId() + "\n"
+//                    + "Title: " + mItems.get(0).getTitle() + "\n"
+//                    + "Body: " + mItems.get(0).getBody());
         }
     }
 }
