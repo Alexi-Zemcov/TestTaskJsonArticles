@@ -25,21 +25,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         new FetchItemsTask().execute();
 
-        mTextViewUserId = (TextView) findViewById(R.id.user_id);
-//        mTextViewUserId.setText(mItems.get(0).getUserId());
-
-        mTextViewId = (TextView) findViewById(R.id.article_id);
-//        mTextViewId.setText(mItems.get(0).getArticleId());
-
-        mTextViewTitle = (TextView) findViewById(R.id.title);
-//        mTextViewTitle.setText(mItems.get(0).getTitle());
-
-        mTextViewBody = (TextView) findViewById(R.id.body);
-//        mTextViewBody.setText(mItems.get(0).getBody());
-
-// Если обратиться к полученной коллекции здесь, то приложение не запускается
+        // Если обратиться к полученной коллекции здесь, то приложение не запускается
         Log.e(TAG, "Collection size from \"onCreate()\" is:" + mItems.size());
+        mTextViewUserId = (TextView) findViewById(R.id.user_id);
+        mTextViewId = (TextView) findViewById(R.id.article_id);
+        mTextViewTitle = (TextView) findViewById(R.id.title);
+        mTextViewBody = (TextView) findViewById(R.id.body);
     }
+
+
 
 
     private class FetchItemsTask extends AsyncTask<Void,Void,List<ArticlesItem>> {
@@ -54,11 +48,14 @@ public class MainActivity extends AppCompatActivity {
             mItems = items;
 //            Обращение к коллекции здесь выдает корректный результат
             Log.e(TAG, "Collection size from \"onPostExecute()\" is: " + mItems.size());
-//            Log.e(TAG, "One article:\n"
-//                    + "User id: " + mItems.get(0).getUserId() + "\n"
-//                    + "Article id: " + mItems.get(0).getArticleId() + "\n"
-//                    + "Title: " + mItems.get(0).getTitle() + "\n"
-//                    + "Body: " + mItems.get(0).getBody());
+            updateUi();
         }
+    }
+
+    private void updateUi() {
+        mTextViewUserId.setText(mItems.get(0).getUserId());
+        mTextViewId.setText(mItems.get(0).getArticleId());
+        mTextViewTitle.setText(mItems.get(0).getTitle());
+        mTextViewBody.setText(mItems.get(0).getBody());
     }
 }
