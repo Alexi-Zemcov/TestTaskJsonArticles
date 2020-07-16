@@ -1,6 +1,6 @@
 package com.jf1303.testtaskjsonarticles;
 
-public class ArticlesItem {
+public class ArticleItem {
     private String mUserId;
     private String mTitle;
     private String mBody;

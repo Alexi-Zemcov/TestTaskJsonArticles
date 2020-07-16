@@ -1,4 +1,4 @@
-package com.jf1303.testtaskjsonarticles;
+package com.jf1303.testtaskjsonarticles.old;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+
+import com.jf1303.testtaskjsonarticles.ArticleItem;
+import com.jf1303.testtaskjsonarticles.JsonPlaceholderFetcher;
+import com.jf1303.testtaskjsonarticles.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextViewTitle;
     private TextView mTextViewBody;
 
-    private List<ArticlesItem> mItems = new ArrayList<>();
+    private List<ArticleItem> mItems = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +40,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private class FetchItemsTask extends AsyncTask<Void,Void,List<ArticlesItem>> {
+    private class FetchItemsTask extends AsyncTask<Void,Void,List<ArticleItem>> {
 
         @Override
-        protected List<ArticlesItem> doInBackground(Void... params) {
+        protected List<ArticleItem> doInBackground(Void... params) {
             return new JsonPlaceholderFetcher().fetchItems();
         }
 
         @Override
-        protected void onPostExecute(List<ArticlesItem> items) {
+        protected void onPostExecute(List<ArticleItem> items) {
             mItems = items;
 //            Обращение к коллекции здесь выдает корректный результат
             Log.e(TAG, "Collection size from \"onPostExecute()\" is: " + mItems.size());

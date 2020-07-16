@@ -6,7 +6,7 @@ public class ArticlesActivity extends SingleFragmentActivity{
 
     @Override
     protected Fragment createFragment() {
-        return null;
+        return ArticlesFragment.newInstance();
     }
 }
 

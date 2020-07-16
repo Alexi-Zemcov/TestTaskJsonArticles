@@ -43,8 +43,8 @@ public class JsonPlaceholderFetcher {
         return new String(getUrlBytes(urlSpec));
     }
 
-    public List<ArticlesItem> fetchItems() {
-        List<ArticlesItem> items = new ArrayList<>();
+    public List<ArticleItem> fetchItems() {
+        List<ArticleItem> items = new ArrayList<>();
 
         try {
             String url = "https://jsonplaceholder.typicode.com/posts";
@@ -61,11 +61,11 @@ public class JsonPlaceholderFetcher {
         return items;
     }
 
-    private  void parseItems(List<ArticlesItem> items, JSONArray jsonBody)
+    private  void parseItems(List<ArticleItem> items, JSONArray jsonBody)
             throws IOException, JSONException {
         for (int i = 0; i < jsonBody.length(); i++) {
             JSONObject articlesJsonObject = jsonBody.getJSONObject(i);
-            ArticlesItem item = new ArticlesItem();
+            ArticleItem item = new ArticleItem();
             item.setUserId(articlesJsonObject.getString("userId"));
             item.setArticleId(articlesJsonObject.getString("id"));
             item.setTitle(articlesJsonObject.getString("title"));
