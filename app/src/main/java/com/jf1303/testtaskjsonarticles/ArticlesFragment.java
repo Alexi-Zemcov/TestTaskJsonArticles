@@ -2,6 +2,7 @@ package com.jf1303.testtaskjsonarticles;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,7 @@ public class ArticlesFragment extends Fragment {
     private void setupAdapter() {
         if (isAdded()) {
             mArticlesRecyclerView.setAdapter(new ArticleAdapter(mItems));
+            Log.i(TAG, "mItems.size() in setupAdapter()" + mItems.size());
         }
     }
 
@@ -89,10 +91,6 @@ public class ArticlesFragment extends Fragment {
     }
 
 
-
-
-
-
     private class FetchItemsTask extends AsyncTask<Void,Void,List<ArticleItem>> {
 
         @Override
@@ -103,6 +101,8 @@ public class ArticlesFragment extends Fragment {
         @Override
         protected void onPostExecute(List<ArticleItem> items) {
             mItems = items;
+            Log.i(TAG, "mItems.size() in onPostExecute()" + mItems.size());
+            setupAdapter();
         }
     }
 
