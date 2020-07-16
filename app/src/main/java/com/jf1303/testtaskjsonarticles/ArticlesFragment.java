@@ -61,7 +61,11 @@ public class ArticlesFragment extends Fragment {
             mTitleTextView = (TextView) itemView;
         }
         public void bindArticlesItem(ArticleItem item) {
-            mTitleTextView.setText(item.getTitle());
+            mTitleTextView.setText(
+                    "Article "+ item.getArticleId() +
+                    "\nUser " + item.getUserId() +
+                    ": "+ item.getTitle() +
+                    "\n");
         }
     }
 
