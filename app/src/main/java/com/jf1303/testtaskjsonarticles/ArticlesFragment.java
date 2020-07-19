@@ -39,7 +39,7 @@ public class ArticlesFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_articels_list, container,
+        View v = inflater.inflate(R.layout.fragment_articles_list, container,
                 false);
         mArticlesRecyclerView = (RecyclerView) v.findViewById(R.id.articles_recycler_view);
         mArticlesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -53,21 +53,31 @@ public class ArticlesFragment extends Fragment {
             Log.i(TAG, "mItems.size() in setupAdapter()" + mItems.size());
         }
     }
+    
 
     private class ArticleHolder extends RecyclerView.ViewHolder {
+        private ArticleItem mArticleItem;
+
         private TextView mTitleTextView;
-        public ArticleHolder(View itemView) {
-            super(itemView);
-            mTitleTextView = (TextView) itemView;
+        private TextView mUserIdTextView;
+        private TextView mArticleIdTextView;
+
+        public ArticleHolder(LayoutInflater inflater, ViewGroup parent) {
+            super(inflater.inflate(R.layout.list_item_article, parent, false));
+
+            mTitleTextView = (TextView) itemView.findViewById(R.id.articleTitle);
+            mUserIdTextView = (TextView) itemView.findViewById(R.id.userID);
+            mArticleIdTextView = (TextView) itemView.findViewById(R.id.articleID);
         }
-        public void bindArticlesItem(ArticleItem item) {
-            mTitleTextView.setText(
-                    "Article "+ item.getArticleId() +
-                    "\nUser " + item.getUserId() +
-                    ": "+ item.getTitle() +
-                    "\n");
+
+        public void bind(ArticleItem articleItem) {
+            mArticleItem = articleItem;
+            mTitleTextView.setText(mArticleItem.getTitle());
+            mUserIdTextView.setText("User " + mArticleItem.getUserId());
+            mArticleIdTextView.setText("#" + mArticleItem.getArticleId());
         }
     }
+
 
     private class ArticleAdapter extends RecyclerView.Adapter<ArticleHolder> {
         private List<ArticleItem> mArticlesItems;
@@ -76,16 +86,17 @@ public class ArticlesFragment extends Fragment {
             mArticlesItems = ArticlesItems;
         }
 
+        @NonNull
         @Override
-        public ArticleHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-            TextView textView = new TextView(getActivity());
-            return new ArticleHolder(textView);
+        public ArticleHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+            return new ArticleHolder(layoutInflater, parent);
         }
 
         @Override
         public void onBindViewHolder(ArticleHolder articleHolder, int position) {
             ArticleItem articleItem = mArticlesItems.get(position);
-            articleHolder.bindArticlesItem(articleItem);
+            articleHolder.bind(articleItem);
         }
 
         @Override
