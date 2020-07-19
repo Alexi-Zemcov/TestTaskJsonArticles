@@ -34,19 +34,19 @@ public class ArticleFragment extends Fragment{
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_article, container, false);
 
-        mTitleTextView.findViewById(R.id.articleTitle);
+        mTitleTextView = (TextView) v.findViewById(R.id.articleTitle);
 //        mTitleTextView.setText("test " + mArticleItem.getTitle());
         mTitleTextView.setText("articleTitle");
 
-        mBodyTextView.findViewById(R.id.articleBody);
+        mBodyTextView = (TextView) v.findViewById(R.id.articleBody);
 //        mBodyTextView.setText("test " + mArticleItem.getBody());
         mBodyTextView.setText("articleBody");
 
-        mUserIdTextView.findViewById(R.id.userID);
+        mUserIdTextView = (TextView) v.findViewById(R.id.userID);
 //        mUserIdTextView.setText("test " + mArticleItem.getUserId());
         mUserIdTextView.setText("userID");
 
-        mArticleIdTextView.findViewById(R.id.articleID);
+        mArticleIdTextView = (TextView) v.findViewById(R.id.articleID);
 //        mArticleIdTextView.setText("test " + mArticleItem.getTitle());
         mArticleIdTextView.setText("articleID");
 
