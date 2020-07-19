@@ -53,9 +53,10 @@ public class ArticlesFragment extends Fragment {
             Log.i(TAG, "mItems.size() in setupAdapter()" + mItems.size());
         }
     }
-    
 
-    private class ArticleHolder extends RecyclerView.ViewHolder {
+
+    private class ArticleHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener{
         private ArticleItem mArticleItem;
 
         private TextView mTitleTextView;
@@ -64,6 +65,7 @@ public class ArticlesFragment extends Fragment {
 
         public ArticleHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_article, parent, false));
+            itemView.setOnClickListener(this);
 
             mTitleTextView = (TextView) itemView.findViewById(R.id.articleTitle);
             mUserIdTextView = (TextView) itemView.findViewById(R.id.userID);
@@ -75,6 +77,11 @@ public class ArticlesFragment extends Fragment {
             mTitleTextView.setText(mArticleItem.getTitle());
             mUserIdTextView.setText("User " + mArticleItem.getUserId());
             mArticleIdTextView.setText("#" + mArticleItem.getArticleId());
+        }
+
+        @Override
+        public void onClick(View view) {
+            
         }
     }
 
