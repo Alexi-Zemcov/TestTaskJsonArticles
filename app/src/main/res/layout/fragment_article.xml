@@ -12,36 +12,48 @@
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold"
-        android:layout_marginBottom="8dp"
-        tools:text="This is an article title"/>
+        tools:text="This is an article title" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user" />
 
         <TextView
             android:id="@+id/userID"
-            android:layout_weight="8"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            tools:text="User 1" />
+            android:layout_weight="8"
+            tools:text="1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="end"
+            android:textColor="@color/colorAccent"
+            android:text="@string/number_symbol" />
 
         <TextView
             android:id="@+id/articleID"
-            android:layout_weight="2"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="end"
             android:textColor="@color/colorAccent"
-            tools:text="#1" />
+            tools:text="1" />
+
     </LinearLayout>
 
     <TextView
         android:id="@+id/articleBody"
+        style="@style/TextAppearance.AppCompat.Body1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        style="@style/TextAppearance.AppCompat.Body1"
-        tools:text="This is body of article"
-        />
+        android:textSize="18sp"
+        tools:text="This is body of article" />
 </LinearLayout>

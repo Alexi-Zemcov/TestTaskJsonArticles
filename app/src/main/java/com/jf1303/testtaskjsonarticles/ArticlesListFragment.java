@@ -77,8 +77,8 @@ public class ArticlesListFragment extends Fragment {
         public void bind(ArticleItem articleItem) {
             mArticleItem = articleItem;
             mTitleTextView.setText(mArticleItem.getTitle());
-            mUserIdTextView.setText("User " + mArticleItem.getUserId());
-            mArticleIdTextView.setText("#" + mArticleItem.getArticleId());
+            mUserIdTextView.setText(mArticleItem.getUserId());
+            mArticleIdTextView.setText(mArticleItem.getArticleId());
         }
 
         @Override
