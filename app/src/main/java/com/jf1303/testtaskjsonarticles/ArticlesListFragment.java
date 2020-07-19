@@ -1,5 +1,6 @@
 package com.jf1303.testtaskjsonarticles;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,14 +18,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArticlesFragment extends Fragment {
+public class ArticlesListFragment extends Fragment {
     private static final String TAG = "ArticlesFragment";
     private RecyclerView mArticlesRecyclerView;
     private List<ArticleItem> mItems = new ArrayList<>();
 
 
-    public static ArticlesFragment newInstance() {
-        return new ArticlesFragment();
+    public static ArticlesListFragment newInstance() {
+        return new ArticlesListFragment();
     }
 
 
@@ -81,7 +82,8 @@ public class ArticlesFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            
+            Intent intent = new Intent(getActivity(), ArticleActivity.class);
+            startActivity(intent);
         }
     }
 

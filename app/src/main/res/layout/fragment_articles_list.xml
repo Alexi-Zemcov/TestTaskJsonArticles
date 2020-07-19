@@ -4,6 +4,6 @@
     android:id="@+id/articles_recycler_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ArticlesActivity">
+    tools:context=".ArticlesListActivity">
 
 </androidx.recyclerview.widget.RecyclerView>

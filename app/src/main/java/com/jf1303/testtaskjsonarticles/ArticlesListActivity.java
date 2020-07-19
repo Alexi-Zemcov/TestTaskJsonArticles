@@ -2,11 +2,11 @@ package com.jf1303.testtaskjsonarticles;
 
 import androidx.fragment.app.Fragment;
 
-public class ArticlesActivity extends SingleFragmentActivity{
+public class ArticlesListActivity extends SingleFragmentActivity{
 
     @Override
     protected Fragment createFragment() {
-        return ArticlesFragment.newInstance();
+        return ArticlesListFragment.newInstance();
     }
 }
 
