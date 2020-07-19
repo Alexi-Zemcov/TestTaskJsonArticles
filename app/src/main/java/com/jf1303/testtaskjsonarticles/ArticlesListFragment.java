@@ -1,5 +1,6 @@
 package com.jf1303.testtaskjsonarticles;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -82,7 +83,11 @@ public class ArticlesListFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(getActivity(), ArticleActivity.class);
+            Intent intent = ArticleActivity.newIntent(getActivity(),
+                    mArticleItem.getArticleId(),
+                    mArticleItem.getUserId(),
+                    mArticleItem.getTitle(),
+                    mArticleItem.getBody());
             startActivity(intent);
         }
     }
@@ -115,6 +120,7 @@ public class ArticlesListFragment extends Fragment {
     }
 
 
+    @SuppressLint("StaticFieldLeak")
     private class FetchItemsTask extends AsyncTask<Void,Void,List<ArticleItem>> {
 
         @Override
