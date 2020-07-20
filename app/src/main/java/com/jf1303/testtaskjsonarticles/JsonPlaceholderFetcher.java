@@ -15,7 +15,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class JsonPlaceholderFetcher {
-    private static String TAG = "JsonPlaceholderFetcher";
 
     public byte[] getUrlBytes(String urlSpec) throws IOException {
         URL url = new URL(urlSpec);
@@ -46,6 +45,7 @@ public class JsonPlaceholderFetcher {
     public List<ArticleItem> fetchItems() {
         List<ArticleItem> items = new ArrayList<>();
 
+        String TAG = "JsonPlaceholderFetcher";
         try {
             String url = "https://jsonplaceholder.typicode.com/posts";
 

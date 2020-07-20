@@ -1,5 +1,6 @@
 package com.jf1303.testtaskjsonarticles;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,17 +9,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
-import java.util.UUID;
+import java.util.Objects;
 
 public class ArticleFragment extends Fragment{
-    private ArticleItem mArticleItem;
-
-    private TextView mTitleTextView;
-    private TextView mBodyTextView;
-    private TextView mUserIdTextView;
-    private TextView mArticleIdTextView;
 
     private Bundle mArticleBundle;
 
@@ -26,12 +22,13 @@ public class ArticleFragment extends Fragment{
         return new ArticleFragment();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //Пока так, потом переделаю :)
-        mArticleBundle = getActivity().getIntent().getExtras();
+        mArticleBundle = Objects.requireNonNull(getActivity()).getIntent().getExtras();
 
     }
 
@@ -41,16 +38,16 @@ public class ArticleFragment extends Fragment{
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_article, container, false);
 
-        mTitleTextView = (TextView) v.findViewById(R.id.articleTitle);
+        TextView mTitleTextView = (TextView) v.findViewById(R.id.articleTitle);
         mTitleTextView.setText(mArticleBundle.getString(ArticleActivity.EXTRA_ARTICLE_TITLE));
 
-        mBodyTextView = (TextView) v.findViewById(R.id.articleBody);
+        TextView mBodyTextView = (TextView) v.findViewById(R.id.articleBody);
         mBodyTextView.setText(mArticleBundle.getString(ArticleActivity.EXTRA_ARTICLE_BODY));
 
-        mUserIdTextView = (TextView) v.findViewById(R.id.userID);
+        TextView mUserIdTextView = (TextView) v.findViewById(R.id.userID);
         mUserIdTextView.setText(mArticleBundle.getString(ArticleActivity.EXTRA_USER_ID));
 
-        mArticleIdTextView = (TextView) v.findViewById(R.id.articleID);
+        TextView mArticleIdTextView = (TextView) v.findViewById(R.id.articleID);
         mArticleIdTextView.setText(mArticleBundle.getString(ArticleActivity.EXTRA_ARTICLE_ID));
 
 

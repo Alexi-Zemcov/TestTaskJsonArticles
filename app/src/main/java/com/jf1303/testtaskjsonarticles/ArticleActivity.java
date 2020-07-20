@@ -5,8 +5,6 @@ import android.content.Intent;
 
 import androidx.fragment.app.Fragment;
 
-import java.util.UUID;
-
 public class ArticleActivity extends SingleFragmentActivity{
     public static final String EXTRA_ARTICLE_ID = "com.jf1303.testtaskjsonarticles.article_id";
     public static final String EXTRA_USER_ID = "com.jf1303.testtaskjsonarticles.user_id";
@@ -32,12 +30,3 @@ public class ArticleActivity extends SingleFragmentActivity{
         return ArticleFragment.newInstance();
     }
 }
-
-
-//public class ArticlesListActivity extends SingleFragmentActivity{
-//
-//    @Override
-//    protected Fragment createFragment() {
-//        return ArticlesListFragment.newInstance();
-//    }
-//}
